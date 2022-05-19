@@ -1,0 +1,9 @@
+id
+url
+url_ref
+title
+date
+ip
+lang
+scr_width
+browser

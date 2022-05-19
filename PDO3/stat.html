@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<meta charset='utf-8'/>
+<meta name="robots" content="noindex"/>
+<style>
+    table {
+        counter-reset: schetchik;  /* нумерация строк таблицы */
+        border-collapse: collapse;
+    }
+    table td,
+    table tbody tr:before {
+        padding: .2em;
+        border: 2px solid #C0C0C0;
+    }
+    table tbody tr {
+        counter-increment: schetchik;
+    }
+    table tbody tr:before {
+        content: counter(schetchik);
+        display: table-cell;
+        vertical-align: middle;
+    }
+</style>
+<table>
+    <thead>
+    <tr><td>№<td>URL
+    <tbody>
+    <!-- здесь будет список страниц, с которых был совершён переход по ссылке -->
+    <tr><td><tr><td>http://pdo3/<td><td>Title<td>17.05.2022 22:53<td>1920<td>ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7<td>127.0.0.1<td>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36<tr><td>http://pdo3/#<td><td>Title<td>17.05.2022 23:12<td>1920<td>ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7<td>127.0.0.1<td>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36<tr><td>http://pdo3/#<td><td>Title<td>17.05.2022 23:12<td>1920<td>ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7<td>127.0.0.1<td>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36

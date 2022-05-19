@@ -1,0 +1,26 @@
+/*** Материал подготовлен сайтом roothelp.ru ***/
+
+#content{
+	width: 400px;
+	margin:50px auto 0px;
+}
+
+
+.table{
+	width: 250px;
+}
+
+.table th{
+	padding: 5px;
+	border-bottom: 2px solid #000000;
+}
+
+.table td{
+	border-bottom: 1px solid #000000;
+	padding: 5px;
+}
+
+.pub{
+	cursor: pointer;
+	color: blue;
+}

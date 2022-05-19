@@ -1,0 +1,8 @@
+# запрет на отображение содержимого директории
+Options -Indexes
+# запрет индексации файлов папки
+Header set X-Robots-Tag "noindex, nofollow"
+# заблокировать доступ к TXT файлам
+<Files "*.txt">
+deny from all
+</Files>

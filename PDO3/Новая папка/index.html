@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<meta charset='utf-8'/>
+<style>
+#adTable {
+  counter-reset: schetchik;  /* счётчик строк в рамках таблицы */ 
+  border-collapse: collapse;
+}
+#adTable tr > * {
+  border: 1px solid #ccc;
+}
+#adTable tbody tr {  /* подсчитывается количество строк у tbody */ 
+  counter-increment: schetchik;
+}
+#adTable tbody tr td:first-child:after {  /* значение записывается в первую ячейку строки */ 
+  content: counter(schetchik);
+}
+</style>
+<form method="POST" id="ad">
+  <input type="email" name="emailAd" required placeholder="Ваш email" x-autocompletetype="email" />
+  <select name="monAd">
+    <option value="00">За всё время</option>
+    <option value="01">Январь</option>
+    <option value="02">Февраль</option>
+    <option value="03">Март</option>
+    <option value="04">Апрель</option>
+    <option value="05">Май</option>
+    <option value="06">Июнь</option>
+    <option value="07">Июль</option>
+    <option value="08">Август</option>
+    <option value="09">Сентябрь</option>
+    <option value="10">Октябрь</option>
+    <option value="11">Ноябрь</option>
+    <option value="12">Декабрь</option>
+  </select>
+  <input type="submit" value="показать">
+</form>
+<table id="adTable"></table>
+<style id="adStyle"></style>
+<script>
+(function(){
+var f = document.getElementById('ad');
+function Dva(){  // фильтрация по месяцам текущего года
+  var mon = f.monAd.options[f.monAd.selectedIndex].value;
+  document.getElementById('adStyle').innerHTML = (mon != '00' ? '#adTable tbody tr:not([data-mon="'+mon+'.'+new Date().getFullYear()+'"]) {visibility: collapse;}' : '');
+}
+f.monAd.addEventListener('change', Dva, false);
+f.addEventListener('submit', function(e){
+  e.preventDefault();
+  var http = new XMLHttpRequest();
+  http.open("POST", "http://сайт1.ru/raz/stat.php");
+  http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  http.send("email=" + f.emailAd.value);
+  http.onreadystatechange = function() {
+    if (http.readyState == 4 && http.status == 200) {
+      document.getElementById('adTable').innerHTML = http.responseText;
+    }
+  }
+  http.onerror = function() {
+    alert('Извините, данные не были переданы');
+  }
+  Dva();
+}, false);
+})()
+</script>
